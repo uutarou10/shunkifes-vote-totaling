@@ -1,20 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Header, Container } from 'semantic-ui-react'
-
-const Component = () => {
-  return (
-    <div>
-      <Container>
-        <Header as='h2'>
-          hogefugapiyomoge
-        </Header>
-      </Container>
-    </div>
-  )
-}
+import App from 'screens/app'
 
 ReactDOM.render(
-  <Component />,
+  <App />,
   document.getElementById('root')
 )
