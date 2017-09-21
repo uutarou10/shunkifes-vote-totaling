@@ -1,0 +1,36 @@
+{
+  "name": "shunki-vote-totaling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile-front": "gulp compile-front",
+    "watch": "gulp watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.7.6",
+    "gulp-concat": "^2.6.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.73.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "standard": "^10.0.3",
+    "webpack": "^3.6.0",
+    "webpack-stream": "^4.0.0"
+  }
+}
