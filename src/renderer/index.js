@@ -1,8 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from 'screens/app'
+import { Provider } from 'react-redux'
+import App from './screens/app'
+import store from './store'
+
+const RootComponent = () => {
+  return (
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  )
+}
 
 ReactDOM.render(
-  <App />,
+  <RootComponent/>,
   document.getElementById('root')
 )
