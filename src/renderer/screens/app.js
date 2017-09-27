@@ -1,46 +1,28 @@
 import React from 'react'
-import { Route, Link, Redirect } from 'react-router-dom'
-import { ConnectedRouter, push } from 'react-router-redux'
+import { Route, Redirect } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
+import { Container } from 'semantic-ui-react'
 import history from '../history'
-import store from '../store'
 
+import Top from './Top/view'
+import AddGroup from './AddGroup/view'
+import AddProject from './AddProject/view'
 
 class App extends React.Component {
   render () {
     return (
-      <ConnectedRouter history={history}>
-        <div>
-          <Redirect to='/top'/>
-          <Route path='/top' component={Top}/>
-          <Route path='/second' component={Second}/>
-          <Route path='/third' component={Third}/>
-        </div>
-      </ConnectedRouter>
+      <div style={{overflow: 'hidden'}}>
+        <ConnectedRouter history={history}>
+          <Container style={{marginTop: '2em'}}>
+            <Redirect to='/top'/>
+            <Route path='/top' component={Top}/>
+            <Route path='/addGroup' component={AddGroup}/>
+            <Route path='/addProject' component={AddProject}/>
+          </Container>
+        </ConnectedRouter>
+      </div>
     )
   }
 }
 
-const Top = () => {
-  return (
-    <div>
-      <p>this is top</p>
-      <Link to='/second'>second</Link>
-      <Link to='/third'>third</Link>
-    </div>
-  )
-}
-
-const Second = () => {
-  return (
-    <p onClick={() => {
-      store.dispatch(push('/top'))
-    }}>this is Second</p>
-  )
-}
-
-const Third = () => {
-  return (
-    <p>this is third</p>
-  )
-}
 export default App
