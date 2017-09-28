@@ -11,6 +11,7 @@ const webpackFrontConfig = (isWatch = false) => {
     output: {
       filename: 'bundle.js'
     },
+    cache: true,
     module: {
       rules: [
         {

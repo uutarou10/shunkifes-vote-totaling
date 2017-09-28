@@ -7,6 +7,8 @@ import history from '../history'
 import Top from './Top/view'
 import AddGroup from './AddGroup/view'
 import AddProject from './AddProject/view'
+import ImportCsv from './ImportCsv/view'
+import InputVotes from './InputVotes/view'
 
 class App extends React.Component {
   render () {
@@ -18,6 +20,8 @@ class App extends React.Component {
             <Route path='/top' component={Top}/>
             <Route path='/addGroup' component={AddGroup}/>
             <Route path='/addProject' component={AddProject}/>
+            <Route path='/importCsv' component={ImportCsv}/>
+            <Route path='/inputVotes' component={InputVotes}/>
           </Container>
         </ConnectedRouter>
       </div>
