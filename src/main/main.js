@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { format } from 'url'
+import './eventReceiver'
 
 let window
 

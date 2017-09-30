@@ -12,6 +12,7 @@ const webpackFrontConfig = (isWatch = false) => {
       filename: 'bundle.js'
     },
     cache: true,
+    target: 'electron',
     module: {
       rules: [
         {
@@ -19,7 +20,7 @@ const webpackFrontConfig = (isWatch = false) => {
           loader: 'babel-loader',
           exclude: '/node_modules/',
           options: {
-            presets: ['es2015', 'react'],
+            presets: ['env', 'es2015', 'react'],
             plugins: ['transform-object-rest-spread']
           }
         }
@@ -65,6 +66,10 @@ gulp.task('clean-main', () => {
 
 gulp.task('clean-static', () => {
   return del.sync('./dist/static/**')
+})
+
+gulp.task('compile-main-watch', ['clean-main'], () => {
+  gulp.watch('./src/renderer/**/*', ['compile-main'])
 })
 
 gulp.task('watch', ['copy-static', 'compile-main', 'compile-front-watch'], () => {

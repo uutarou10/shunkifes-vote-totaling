@@ -4,23 +4,44 @@ import {
   Button
 } from 'semantic-ui-react'
 import ReturnMenuButton from '../../component/returnMenu'
+import fileChooser from '../../events/fileChooser'
+import {
+  compose,
+  withState
+} from 'recompose'
 
-const ImportCsv = () => {
+const enhance = compose(
+  withState('filePath', 'setFilePath', '')
+)
+
+const ImportCsv = (props) => {
+  const {
+    filePath,
+    setFilePath
+  } = props
+
   return (
     <div>
       <Header content='マークシート読み込みデータ入力' subheader='マークシート読取機の出力したCSVを読み込みます'/>
       <div>
-        <Button>ファイルを選択</Button>
-        <span>/Users/uutarou/electron-api-demos</span>
+        <Button
+          onClick={() => {
+            setFilePath(fileChooser.open())
+          }}
+        >ファイルを選択</Button>
+        <span>{filePath}</span>
         <Button
           primary
-          disable
-          disabled
-          floated='right'>マークシートを読み込む</Button>
+          disabled={filePath === ''}
+          floated='right'
+          onClick={() => {
+            console.log('hoge')
+          }}
+        >マークシートを読み込む</Button>
       </div>
       <ReturnMenuButton/>
     </div>
   )
 }
 
-export default ImportCsv
+export default enhance(ImportCsv)

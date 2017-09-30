@@ -19,7 +19,7 @@ const buttonStyle = {
 const Start = () => {
   return (
     <div>
-      <Header as='h1' subheader='Ver 0.0.1' content='ShunkiFes Vote Totaling System'/>
+      <Header as='h1' subheader='Ver 0.0.1' content='ShunkiFes Tabulation System'/>
       <Grid columns={2} divided>
         <Grid.Row>
           <Grid.Column>
