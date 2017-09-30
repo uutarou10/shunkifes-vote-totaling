@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import reducer from './reducers'
+import reducer from './modules'
 import history from './history'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 
@@ -12,7 +12,7 @@ const logger = (store) => (next) => (action) => {
 }
 
 const rootReducer = combineReducers({
-  ...reducer,
+  reducer,
   router: routerReducer
 })
 

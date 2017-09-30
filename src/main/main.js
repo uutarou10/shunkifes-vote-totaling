@@ -20,6 +20,8 @@ function createWindow () {
   window.on('closed', () => {
     window = null
   })
+
+  window.webContents.openDevTools()
 }
 
 app.on('ready', createWindow)

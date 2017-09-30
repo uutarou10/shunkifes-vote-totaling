@@ -13,30 +13,21 @@ import {
 import store from '../../store'
 import { push } from 'react-router-redux'
 import ReturnMenuButton from '../../component/returnMenu'
+import connect from './connect'
+import { withState, compose } from 'recompose'
 
-const AddProject = (groupName) => {
-  const sectionOptions = [
-    {
-      text: '中学発表',
-      value: 'junior-high-school'
-    },
-    {
-      text: '高校発表',
-      value: 'high-school-presentation'
-    },
-    {
-      text: '高校販売',
-      value: 'high-school-seling'
-    },
-    {
-      text: '部活・同好会・有志',
-      value: 'club'
-    },
-    {
-      text: '後夜祭',
-      value: 'after-party'
-    }
-  ]
+const enhance = compose(
+  withState('groupName', 'setGroupName', '');
+)
+
+const AddProject = (props, section) => {
+  const sections = {
+    'junior-high-school': '中学発表',
+    'high-school-presentation': '高校発表',
+    'high-school-selling': '高校販売',
+    'club': '部活・同好会',
+    'after-party': '後夜祭'
+  }
 
   return (
     <div style={{padding: '10px'}}>
@@ -52,12 +43,7 @@ const AddProject = (groupName) => {
             </Form.Field>
             <Form.Field>
               <label>区分</label>
-              <Dropdown
-                placeholder='区分を選択...'
-                options={sectionOptions}
-                fluid
-                section
-              />
+              <p>{sections[section]}</p>
             </Form.Field>
             <Form.Field>
               <label>団体名</label>
@@ -70,7 +56,15 @@ const AddProject = (groupName) => {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary>追加</Button>
+          <Button primary onClick={() => {
+            console.log(props)
+            props.addPresentation({
+              id: 1,
+              section: section,
+              groupName: 'group',
+              projectName: 'project'
+            })
+          }}>追加</Button>
         </Modal.Actions>
       </Modal>
       <Table celled>
@@ -93,19 +87,21 @@ const AddProject = (groupName) => {
   )
 }
 
-const panes = [
-  {menuItem: '中学発表', render: () => AddProject('中学')},
-  {menuItem: '高校発表', render: AddProject},
-  {menuItem: '高校販売', render: AddProject},
-  {menuItem: '部活・同好会', render: AddProject},
-  {menuItem: '後夜祭', render: AddProject}
-]
+const panes = (props) => {
+  return [
+    {menuItem: '中学発表', render: () => AddProject(props, 'junior-high-school')},
+    {menuItem: '高校発表', render: () => AddProject(props, 'high-school-presentation')},
+    {menuItem: '高校販売', render: () => AddProject(props, 'high-school-selling')},
+    {menuItem: '部活・同好会', render: () => AddProject(props, 'club')},
+    {menuItem: '後夜祭', render: () => AddProject(props, 'after-party')}
+  ]
+}
 
-const AddProjectTab = () => {
+const AddProjectTab = (props) => {
   return (
     <div>
       <Header as='h2' content='企画登録'/>
-      <Tab panes={panes}/>
+      <Tab panes={panes(props)}/>
       <div style={{textAlign: 'right'}}>
         <Button
           style={{marginTop: '0.25em', marginRight: '10px'}} color='green'
@@ -117,4 +113,4 @@ const AddProjectTab = () => {
   )
 }
 
-export default AddProjectTab
+export default connect(AddProjectTab)
