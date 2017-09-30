@@ -29,26 +29,8 @@ const presentations = (state = [], action) => {
   return state
 }
 
-const isSaved = (state = true, action) => {
-  if (action.type === ADD_PRESENTATION) {
-    // 未保存の発表があるので的な（眠い
-    return false
-  }
-
-  if (action.type === SAVE_PRESENTATIONS) {
-    return true
-  }
-
-  return state
-}
-
-// root reducer
-
-export default combineReducers({
-  presentations,
-  isSaved
-})
+export default presentations
 
 // selector
 
-export const getPresentations = state => state.reducer.presentations.presentations
+export const getPresentations = state => state.reducer.presentations
