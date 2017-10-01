@@ -20,6 +20,8 @@ const presentations = (state = [], action) => {
       ...state,
       {
         id: action.payload.id,
+        grade: action.payload.grade,
+        classNumber: action.payload.classNumber,
         section: action.payload.section,
         groupName: action.payload.groupName,
         projectName: action.payload.projectName

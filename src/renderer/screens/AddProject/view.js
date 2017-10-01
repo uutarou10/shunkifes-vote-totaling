@@ -15,6 +15,8 @@ import { withState, compose } from 'recompose'
 
 const enhance = compose(
   withState('section', 'setSection', ''),
+  withState('grade', 'setGrade', ''),
+  withState('classNumber', 'setClassNumber', ''),
   withState('groupName', 'setGroupName', ''),
   withState('projectName', 'setProjectName', '')
 )
@@ -23,6 +25,10 @@ const AddProject = (props) => {
   const {
     section,
     setSection,
+    grade,
+    setGrade,
+    classNumber,
+    setClassNumber,
     groupName,
     setGroupName,
     projectName,
@@ -86,6 +92,14 @@ const AddProject = (props) => {
               />
             </Form.Field>
             <Form.Field>
+              <label>学年</label>
+              <Input fluid type='number' value={grade} onChange={(e) => setGrade(parseInt(e.target.value))}/>
+            </Form.Field>
+            <Form.Field>
+              <label>クラス</label>
+              <Input fluid type='number' value={classNumber} onChange={(e) => setClassNumber(parseInt(e.target.value))}/>
+            </Form.Field>
+            <Form.Field>
               <label>団体名</label>
               <Input fluid value={groupName} onChange={(e) => setGroupName(e.target.value)}/>
             </Form.Field>
@@ -97,18 +111,22 @@ const AddProject = (props) => {
         </Modal.Content>
         <Modal.Actions>
           <Button
-            disabled={groupName === '' || projectName === '' || section === ''}
+            disabled={groupName === '' || projectName === '' || section === '' || grade === null || classNumber === null}
             primary
             onClick={() => {
               addPresentation({
                 id: newId,
                 section: section,
+                grade: grade,
+                classNumber: classNumber,
                 groupName: groupName,
                 projectName: projectName
               })
               setSection('')
               setProjectName('')
               setGroupName('')
+              setGrade('')
+              setClassNumber('')
             }}>追加</Button>
         </Modal.Actions>
       </Modal>
@@ -116,6 +134,8 @@ const AddProject = (props) => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>No</Table.HeaderCell>
+            <Table.HeaderCell>学年</Table.HeaderCell>
+            <Table.HeaderCell>クラス</Table.HeaderCell>
             <Table.HeaderCell>区分</Table.HeaderCell>
             <Table.HeaderCell>団体名</Table.HeaderCell>
             <Table.HeaderCell>企画名</Table.HeaderCell>
@@ -127,6 +147,8 @@ const AddProject = (props) => {
               return (
                 <Table.Row key={presentation.id}>
                   <Table.Cell>{presentation.id}</Table.Cell>
+                  <Table.Cell>{presentation.grade}</Table.Cell>
+                  <Table.Cell>{presentation.classNumber}</Table.Cell>
                   <Table.Cell>{sections[presentation.section]}</Table.Cell>
                   <Table.Cell>{presentation.groupName}</Table.Cell>
                   <Table.Cell>{presentation.projectName}</Table.Cell>

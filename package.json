@@ -13,9 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv": "^1.1.1",
+    "csv-parse": "^1.2.3",
     "electron": "^1.7.6",
     "gulp-concat": "^2.6.1",
     "history": "^4.7.2",
+    "iconv-lite": "^0.4.19",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

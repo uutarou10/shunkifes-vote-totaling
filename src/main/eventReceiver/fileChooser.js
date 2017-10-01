@@ -3,6 +3,7 @@ import {
   dialog
 } from 'electron'
 import path from 'path'
+import csvImportService from '../service/csvImportService'
 
 ipcMain.on('openFileDialog', (event) => {
   dialog.showOpenDialog({
@@ -16,4 +17,8 @@ ipcMain.on('openFileDialog', (event) => {
   }, (filePath) => {
     event.returnValue = filePath[0]
   })
+})
+
+ipcMain.on('parseCsv', (event, arg) => {
+  csvImportService.parse(arg[0])
 })

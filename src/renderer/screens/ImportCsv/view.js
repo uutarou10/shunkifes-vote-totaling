@@ -9,6 +9,7 @@ import {
   compose,
   withState
 } from 'recompose'
+import csvImport from '../../events/csvImport'
 
 const enhance = compose(
   withState('filePath', 'setFilePath', '')
@@ -35,7 +36,8 @@ const ImportCsv = (props) => {
           disabled={filePath === ''}
           floated='right'
           onClick={() => {
-            console.log('hoge')
+            console.log(filePath)
+            csvImport.startParse(filePath)
           }}
         >マークシートを読み込む</Button>
       </div>
