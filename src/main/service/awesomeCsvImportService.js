@@ -84,7 +84,7 @@ const tabulationCsvVotes = (voteObjectArray, section) => {
   if (section === 'juniorHighSchool' || section === 'highSchoolPresentation' || section === 'highSchoolCelling') {
     voteObjectArray.forEach((vote) => {
       // vote[section] にはsectionに対する投票の企画番号が入っている
-      if (vote[section] !== 0) {
+      if (vote[section] !== 0 && vote[section] !== vote.ownHrId) {
         if (result[[vote[section]]]) {
           result[[vote[section]]] = result[[vote[section]]] + 1
         } else {
@@ -94,7 +94,7 @@ const tabulationCsvVotes = (voteObjectArray, section) => {
     })
   } else if (section === 'club') {
     voteObjectArray.forEach((vote) => {
-      if (vote[section] !== vote.ownClubIds[0] || vote[section] !== vote.ownClubIds[1]) {
+      if (vote[section] !== 0 && vote[section] !== vote.ownClubIds[0] && vote[section] !== vote.ownClubIds[1]) {
         if (result[[vote[section]]]) {
           result[[vote[section]]] = result[[vote[section]]] + 1
         } else {
@@ -105,4 +105,9 @@ const tabulationCsvVotes = (voteObjectArray, section) => {
   }
 
   return result
+}
+
+export default {
+  parse,
+  tabulationCsvVotes
 }
