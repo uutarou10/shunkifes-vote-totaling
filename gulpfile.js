@@ -69,7 +69,7 @@ gulp.task('clean-static', () => {
 })
 
 gulp.task('compile-main-watch', ['clean-main'], () => {
-  gulp.watch('./src/renderer/**/*', ['compile-main'])
+  gulp.watch('./src/main/**/*', ['compile-main'])
 })
 
 gulp.task('watch', ['copy-static', 'compile-main', 'compile-front-watch'], () => {
