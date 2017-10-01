@@ -42,8 +42,8 @@ const Start = () => {
           </Grid.Column>
           <Grid.Column>
             <Header as='h2'><Icon name='bar chart'/>集計結果</Header>
-            <Header.Subheader style={subheaderStyle}>集計結果の確認を行います。</Header.Subheader>
-            <Button fluid style={buttonStyle}>集計処理・結果の確認</Button>
+            <Header.Subheader style={subheaderStyle} >集計結果の確認を行います。</Header.Subheader>
+            <Button fluid style={buttonStyle} onClick={() => { store.dispatch(push('/result'))}}>集計処理・結果の確認</Button>
             <Button fluid style={buttonStyle}>統計情報の確認</Button>
           </Grid.Column>
         </Grid.Row>

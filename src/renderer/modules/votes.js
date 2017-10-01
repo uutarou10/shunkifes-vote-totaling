@@ -31,6 +31,11 @@ const visitorVotes = (state = [], action) => {
   return state
 }
 
+const insideVotes = (state = [], action) => {
+  return state
+}
+
 export default combineReducers({
-  visitorVotes
+  visitorVotes,
+  insideVotes
 })

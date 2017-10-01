@@ -8,6 +8,7 @@ import Top from './Top/view'
 import AddProject from './AddProject/view'
 import ImportCsv from './ImportCsv/view'
 import InputVotes from './InputVotes/view'
+import Result from './Result/view'
 
 class App extends React.Component {
   render () {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Route path='/addProject' component={AddProject}/>
             <Route path='/importCsv' component={ImportCsv}/>
             <Route path='/inputVotes' component={InputVotes}/>
+            <Route path='/result' component={Result}/>
           </Container>
         </ConnectedRouter>
       </div>

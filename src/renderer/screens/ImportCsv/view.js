@@ -1,4 +1,6 @@
 import React from 'react'
+import store from '../../store'
+import { push } from 'react-router-redux'
 import {
   Header,
   Button
@@ -38,6 +40,8 @@ const ImportCsv = (props) => {
           onClick={() => {
             console.log(filePath)
             csvImport.startParse(filePath)
+            window.alert('読み込みが完了しました')
+            store.dispatch(push('/top'))
           }}
         >マークシートを読み込む</Button>
       </div>
